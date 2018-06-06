@@ -212,9 +212,9 @@ BOOL proISO11898_1::SetComParam(PDU_PARAM_ITEM* pParamItem, UNUM32 ItemNum)
 		UNUM32 comid         = param.ComParamId;//链路层暂时放在上层
 		UNUM32 data          = *static_cast<UNUM32 *>(param.pComParamData);
 		if      (CP_CyclicRespTimeout     == comid)m_CyclicRespTimeout     = data;
-		if      (CP_TerminationType       == comid)m_TerminationType     = data;
-		if      (CP_SamplesPerBit         == comid)m_SamplesPerBit = data;
-		if      (CP_CyclicRespTimeout     == comid)m_CyclicRespTimeout     = data;
+		else if (CP_TerminationType       == comid)m_TerminationType     = data;
+		else if (CP_SamplesPerBit         == comid)m_SamplesPerBit = data;
+		else if (CP_CyclicRespTimeout     == comid)m_CyclicRespTimeout     = data;
 		else if (CP_CanFillerByte         == comid)m_frame.defaultFillByte = (UNUM8)data;
 		else if (CP_P2Max                 == comid)m_p2max                 = data;
 		else if (CP_SwCan_HighVoltage     == comid)m_SwCan_HighVoltage     = data;
